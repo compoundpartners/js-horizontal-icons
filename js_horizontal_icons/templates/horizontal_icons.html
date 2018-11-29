@@ -1,0 +1,28 @@
+{% load thumbnail sekizai_tags cms_tags %}
+
+  <section class="container section ft-centered">
+
+    <header class="sec-heading">
+      <h2>{{ object.title }}</h2>
+      <span class="subheading">{{ object.summary }}</span>
+    </header>
+
+    <div class="row mb-50">
+
+      {% for plugin in object.child_plugin_instances %}
+          {% render_plugin plugin %}
+      {% endfor %}
+
+    </div><!-- / .row -->
+
+    {% if object.button_link and object.button_text %}
+
+      <div class="row text-center">
+        <div class="col-sm-12">
+          <a href="{{ object.button_link }}" class="btn btn-light wow fadeIn" data-wow-duration="2s" data-wow-delay="1s" style="visibility: visible; animation-duration: 2s; animation-delay: 1s; animation-name: fadeIn;">{{ object.button_text }}</a>
+        </div>
+      </div><!-- / .row -->
+
+    {% endif %}
+
+  </section>
